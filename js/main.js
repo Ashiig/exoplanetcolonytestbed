@@ -22,7 +22,7 @@ window.onload = function() {
             var logo = game.add.tileSprite(0, 0,800,640, 'bgtile',0);
             
 	    for (i = 0; i < objArray.length; i++){
-		game.add.sprite((objArray[i].xLoc * 64) + 1, (objArray[i].yLoc * 64) + 1, objArray[i].type);
+		game.add.sprite((objArray[i].xLoc * (199/3)) + 1, (objArray[i].yLoc * 199/3) + 1, objArray[i].type);
 	    }
 
 //var building = game.add.sprite(1,1,'build001');
