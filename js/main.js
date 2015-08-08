@@ -44,7 +44,7 @@ window.onload = function() {
 
 	    var down = game.add.button(400, 640 - 92, 'arrow', move_down, this);
 	    down.anchor.setTo(0.5, 0.5);
-	    down.angle.setTo(180);
+	    down.angle = (180);
 	}
 	
 	function move_down() {
