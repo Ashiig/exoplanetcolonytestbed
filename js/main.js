@@ -18,9 +18,16 @@ window.onload = function() {
 	}
 
 	function create () {
-	    var objArray = [new building(0,0,typeList[0]), new building(3,2,typeList[2]), new building(8,6, typeList[1])];
-            var logo = game.add.tileSprite(0, 0,800,640, 'bgtile',0);
-            
+	    //var objArray = [new building(0,0,typeList[0]), new building(3,2,typeList[2]), new building(8,6, typeList[1])];
+            var objArray = [];
+	    for(i = 0; i < 12; i++){
+		for(j = 0; j < 12; j++){
+		    objArray[(i * 12) + j] = new building(i,j,typeList[((i * 12) + j) % 3]);
+		}
+	    }
+
+	    var logo = game.add.tileSprite(0, 0,800,640, 'bgtile',0);
+             
 	    for (i = 0; i < objArray.length; i++){
 		game.add.sprite((objArray[i].xLoc * (199/3)) + 1, (objArray[i].yLoc * 199/3) + 1, objArray[i].type);
 	    }
