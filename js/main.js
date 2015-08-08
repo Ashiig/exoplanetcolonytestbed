@@ -2,7 +2,7 @@ window.onload = function() {
 
 	var game = new Phaser.Game(800,600,Phaser.AUTO, '', { preload: preload, create: create , update: update});
 
-	var typeList = ['build001','build002','build003'];
+	var typeList = ['build001','build002','build003','build005','build006'];
 	var offset = [0,0, false];	
 	
 	var upAro, downAro, leftAro, rightAro;
@@ -19,6 +19,8 @@ window.onload = function() {
 		game.load.image('build001', 'assets/images/building001.png');
 		game.load.image('build002', 'assets/images/building002.png');
 		game.load.image('build003', 'assets/images/building003.png');
+		game.load.image('build005', 'assets/images/building005.png');
+		game.load.image('build006', 'assets/images/building006.png');
 		game.load.spritesheet('arrow', 'assets/images/arrow_spritesheet.png', 64, 64, 64,0, 0);
 		//game.load.image('arrow_defunct', 'assets/images/arrow_defunct.png');
 	}
@@ -29,7 +31,7 @@ window.onload = function() {
 	    for(i = 0; i < 12; i++){
 		for(j = 0; j < 12; j++){
 		    //if(i % 5 == j){
-		    objArray[(i * 12) + j] = new building(i,j,typeList[((i * 12) + j) % 3]);
+		    objArray[(i * 12) + j] = new building(i,j,typeList[(i  + j) % 5]);
 		    //}
 		}
 	    }
@@ -89,7 +91,7 @@ window.onload = function() {
 		offset[0] -= 1;
 		console.log(offset[0]);
 		if(offset[0] <= 0){
-			leftAroframe = 0;
+			leftAro.frame = 0;
 		}
 		offset[2] = true;
 		}
