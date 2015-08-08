@@ -28,9 +28,9 @@ window.onload = function() {
             
 	    for(i = 0; i < 12; i++){
 		for(j = 0; j < 12; j++){
-		    if(i % 5 == j){
+		    //if(i % 5 == j){
 		    objArray[(i * 12) + j] = new building(i,j,typeList[((i * 12) + j) % 3]);
-		    }
+		    //}
 		}
 	    }
 
