@@ -18,8 +18,8 @@ window.onload = function() {
 		game.load.image('build001', 'assets/images/building001.png');
 		game.load.image('build002', 'assets/images/building002.png');
 		game.load.image('build003', 'assets/images/building003.png');
-		game.load.image('arrow', 'assets/images/arrow.png');
-		game.load.image('arrow_defunct', 'assets/images/arrow_defunct.png');
+		game.load.spritesheet('arrow', 'assets/images/arrow_spritesheet.png', 64, 64, 0, 0);
+		//game.load.image('arrow_defunct', 'assets/images/arrow_defunct.png');
 	}
 
 	function create () {
@@ -46,64 +46,69 @@ window.onload = function() {
 	    //game.add.image(1,1,bmd);
 
 	    downAro = game.add.button(400, 640 - 64, 'arrow', move_down, this);
+	    downAro.frame = 1;
 	    downAro.anchor.setTo(0.5, 0.5);
 	    downAro.angle = (180);
 
 
-	    upAro = game.add.button(400, 64, 'arrow_defunct', move_up, this);
+	    upAro = game.add.button(400, 64, 'arrow', move_up, this);
+	    upAro.frame = 0;
 	    upAro.anchor.setTo(0.5, 0.5);
 	    upAro.angle = (0);
 
 
-	    leftAro = game.add.button(64, 320, 'arrow_defunct', move_left, this);
+	    leftAro = game.add.button(64, 320, 'arrow', move_left, this);
+   	    leftAro.frame = 0;
 	    leftAro.anchor.setTo(0.5, 0.5);
 	    leftAro.angle = (270);
 
 
 	    rightAro = game.add.button(800 - 64, 320, 'arrow', move_right, this);
+	    rightAro.frame = 1;
 	    rightAro.anchor.setTo(0.5, 0.5);
 	    rightAro.angle = (90);
 	}
 	
 	function move_down() {
 		if(offset[1] < 64){
-		upAro.key = 'arrow';
+		upAro.frame = 1;
 		offset[1] += 1;
 		console.log(offset[1]);
 		if(offset[1] == 64){
-			downAro.key = 'arrow_defunct';
+			downAro.frame = 0;
 		}
 		}
 	}
 
 	function move_left() {
 		if(offset[0] >= 1){
+		rightAro.frame = 1;
 		offset[0] -= 1;
 		console.log(offset[1]);
 		if(offset[0] == 0){
-			leftAro.key = 'arrow_defunct';
+			leftAroframe = 0;
 		}
 		}
 	}
 
 	function move_right() {
 		if(offset[0] < 64){
-		leftAro.key = 'arrow';
+		leftAro.frame = 1;
 		offset[1] += 1;
 		console.log(offset[1]);
 		if(offset[0] == 64){
-			rightAro.key = 'arrow_defunct';
+			rightAro.frame = 0;
 		}
 		}
 	}
 
 	function move_up() {
 		if(offset[1] >= 1){
-			downAro.key = 'arrow';
+			downAro.frame = 1;
 			offset[1] -= 1;
 			console.log(offset[1]);
 			if(offset[1] == 0){
-				upAro.key = 'arrow_defunct';
+				upAro.frame = 0;
 			}
 		}
 		
