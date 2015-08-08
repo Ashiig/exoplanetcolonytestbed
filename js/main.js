@@ -11,6 +11,7 @@ window.onload = function() {
 	    
             var logo = game.add.tileSprite(0, 0,800,640, 'bgtile',0);
             var building = game.add.sprite(1,1,'build001');
+	    game.stage.smoothed = false;
 	    //var bmd = game.make.bitmapData(64,64);
 	    //bmd.alphaMask('build001','build001');
 
