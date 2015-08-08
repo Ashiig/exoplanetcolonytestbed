@@ -121,7 +121,7 @@ window.onload = function() {
 	}
 
 	function update() {
-	if(offset[2])
+	if(offset[2]){
 	    for (i = 0; i < objArray.length; i++){
 		objArray[i].obj.x = ((objArray[i].xLoc + offset[0]) * (199/3)) + 1;
 		objArray[i].obj.y = ((objArray[i].yLoc + offset[1]) * (199/3)) + 1;
