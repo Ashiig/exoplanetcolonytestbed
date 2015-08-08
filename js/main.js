@@ -18,7 +18,7 @@ window.onload = function() {
 		game.load.image('build001', 'assets/images/building001.png');
 		game.load.image('build002', 'assets/images/building002.png');
 		game.load.image('build003', 'assets/images/building003.png');
-		game.load.spritesheet('arrow', 'assets/images/arrow_spritesheet.png', 64, 64, 0, 0);
+		game.load.spritesheet('arrow', 'assets/images/arrow_spritesheet.png', 64, 64, 64,0, 0);
 		//game.load.image('arrow_defunct', 'assets/images/arrow_defunct.png');
 	}
 
