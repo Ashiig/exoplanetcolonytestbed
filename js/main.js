@@ -28,8 +28,9 @@ window.onload = function() {
             
 	    for(i = 0; i < 12; i++){
 		for(j = 0; j < 12; j++){
-		    
-		    //objArray[(i * 12) + j] = new building(i,j,typeList[((i * 12) + j) % 3]);
+		    if(i % 5 == j){
+		    objArray[(i * 12) + j] = new building(i,j,typeList[((i * 12) + j) % 3]);
+		    }
 		}
 	    }
 
@@ -122,8 +123,8 @@ window.onload = function() {
 	function update() {
 	if(offset[2])
 	    for (i = 0; i < objArray.length; i++){
-		objArray[i].obj.x = (objArray[i].xLoc + offset[0]) * (199/3)) + 1;
-		objArray[i].obj.y = (objArray[i].yLoc + offset[1]) * (199/3)) + 1;
+		objArray[i].obj.x = ((objArray[i].xLoc + offset[0]) * (199/3)) + 1;
+		objArray[i].obj.y = ((objArray[i].yLoc + offset[1]) * (199/3)) + 1;
 		
 	    }
 	    offset[2] = false;
