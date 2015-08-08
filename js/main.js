@@ -27,7 +27,8 @@ window.onload = function() {
             var objArray = [];
 	    for(i = 0; i < 12; i++){
 		for(j = 0; j < 12; j++){
-		    objArray[(i * 12) + j] = new building(i,j,typeList[((i * 12) + j) % 3]);
+		    
+		    //objArray[(i * 12) + j] = new building(i,j,typeList[((i * 12) + j) % 3]);
 		}
 	    }
 
@@ -51,17 +52,17 @@ window.onload = function() {
 
 	    var upAro = game.add.button(400, 64, 'arrow_defunct', move_up, this);
 	    upAro.anchor.setTo(0.5, 0.5);
-	    upAro.angle = (180);
+	    upAro.angle = (0);
 
 
-	    var leftAro = game.add.button(400, 640 - 64, 'arrow_defunct', move_left, this);
+	    var leftAro = game.add.button(64, 320, 'arrow_defunct', move_left, this);
 	    leftAro.anchor.setTo(0.5, 0.5);
 	    leftAro.angle = (270);
 
 
-	    var rightAro = game.add.button(400, 640 - 64, 'arrow', move_right, this);
+	    var rightAro = game.add.button(800 - 64, 320, 'arrow', move_right, this);
 	    rightAro.anchor.setTo(0.5, 0.5);
-	    rightAro.angle = (900);
+	    rightAro.angle = (90);
 	}
 	
 	function move_down() {
