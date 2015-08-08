@@ -3,6 +3,7 @@ window.onload = function() {
 	var game = new Phaser.Game(800,600,Phaser.AUTO, '', { preload: preload, create: create});
 
 	var typeList = ['build001','build002','build003'];
+	var offset = [0,0];	
 
 	function building(_xLoc, _yLoc, _type) {
 		this.xLoc = _xLoc;
@@ -15,6 +16,8 @@ window.onload = function() {
 		game.load.image('build001', 'assets/images/building001.png');
 		game.load.image('build002', 'assets/images/building002.png');
 		game.load.image('build003', 'assets/images/building003.png');
+		game.load.image('arrow', 'assets/images/arrow.png');
+		game.load.image('arrow_defunct', 'assets/images/arrow_defunct.png');
 	}
 
 	function create () {
@@ -38,6 +41,14 @@ window.onload = function() {
 	    //bmd.alphaMask('build001','build001');
 
 	    //game.add.image(1,1,bmd);
-	}
 
+	    var down = game.add.button(400, 640 - 92, 'arrow', move_down, this);
+	    down.anchor.setTo(0.5, 0.5);
+	    down.angle.setTo(180);
+	}
+	
+	function move_down() {
+		offset[1] += 1;
+		console.log(offset[1]);
+	}
 };
