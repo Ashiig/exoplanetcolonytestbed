@@ -1,16 +1,17 @@
 window.onload = function() {
 
-	var game = new Phaser.Game(800,600,Phaser.AUTO, '', { preload: preload, create: create});
+	var game = new Phaser.Game(800,600,Phaser.AUTO, '', { preload: preload, create: create , update: update});
 
 	var typeList = ['build001','build002','build003'];
-	var offset = [0,0];	
+	var offset = [0,0, false];	
 	
 	var upAro, downAro, leftAro, rightAro;
-
-	function building(_xLoc, _yLoc, _type) {
+	var objArray = [];
+	function building(_xLoc, _yLoc, _type){
 		this.xLoc = _xLoc;
 		this.yLoc = _yLoc;
 		this.type = _type;
+		this.obj = undefined;
 	}
 	
 	function preload() {
@@ -24,7 +25,7 @@ window.onload = function() {
 
 	function create () {
 	    //var objArray = [new building(0,0,typeList[0]), new building(3,2,typeList[2]), new building(8,6, typeList[1])];
-            var objArray = [];
+            
 	    for(i = 0; i < 12; i++){
 		for(j = 0; j < 12; j++){
 		    
@@ -35,7 +36,7 @@ window.onload = function() {
 	    var logo = game.add.tileSprite(0, 0,800,640, 'bgtile',0);
              
 	    for (i = 0; i < objArray.length; i++){
-		game.add.sprite((objArray[i].xLoc * (199/3)) + 1, (objArray[i].yLoc * 199/3) + 1, objArray[i].type);
+		objArray[i].obj = game.add.sprite(((objArray[i].xLoc + offset[0])* (199/3)) + 1, ((objArray[i].yLoc + offset[1]) * 199/3) + 1, objArray[i].type);
 	    }
 
 //var building = game.add.sprite(1,1,'build001');
@@ -74,9 +75,10 @@ window.onload = function() {
 		upAro.frame = 1;
 		offset[1] += 1;
 		console.log(offset[1]);
-		if(offset[1] == 64){
+		if(offset[1] >= 64){
 			downAro.frame = 0;
 		}
+		offset[2] = true;
 		}
 	}
 
@@ -84,33 +86,48 @@ window.onload = function() {
 		if(offset[0] >= 1){
 		rightAro.frame = 1;
 		offset[0] -= 1;
-		console.log(offset[1]);
-		if(offset[0] == 0){
+		console.log(offset[0]);
+		if(offset[0] <= 0){
 			leftAroframe = 0;
 		}
+		offset[2] = true;
 		}
 	}
 
 	function move_right() {
 		if(offset[0] < 64){
 		leftAro.frame = 1;
-		offset[1] += 1;
-		console.log(offset[1]);
-		if(offset[0] == 64){
+		offset[0] += 1;
+		console.log(offset[0]);
+		if(offset[0] >= 64){
 			rightAro.frame = 0;
 		}
+		offset[2] = true;
 		}
 	}
 
 	function move_up() {
 		if(offset[1] >= 1){
-			downAro.frame = 1;
-			offset[1] -= 1;
-			console.log(offset[1]);
-			if(offset[1] == 0){
-				upAro.frame = 0;
-			}
+		downAro.frame = 1;
+		offset[1] -= 1;
+		console.log(offset[1]);
+		if(offset[1] <= 0){
+			upAro.frame = 0;
+		}
+		offset[2] = true;
 		}
 		
 	}
+
+	function update() {
+	if(offset[2])
+	    for (i = 0; i < objArray.length; i++){
+		objArray[i].obj.x = (objArray[i].xLoc + offset[0]) * (199/3)) + 1;
+		objArray[i].obj.y = (objArray[i].yLoc + offset[1]) * (199/3)) + 1;
+		
+	    }
+	    offset[2] = false;
+	}		
+	}
+	
 };
