@@ -18,7 +18,7 @@ window.onload = function() {
 	}
 
 	function create () {
-	    var objArray = [new building(0,0,typeList[0]), new building(3,2,typeList[2], new building(8,6, typeList[1])];
+	    var objArray = [new building(0,0,typeList[0]), new building(3,2,typeList[2]), new building(8,6, typeList[1])];
             var logo = game.add.tileSprite(0, 0,800,640, 'bgtile',0);
             
 	    for (i = 0; i < objArray.length; i++){
