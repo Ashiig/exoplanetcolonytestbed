@@ -37,7 +37,7 @@ window.onload = function() {
 	    var logo = game.add.tileSprite(0, 0,800,640, 'bgtile',0);
              
 	    for (i = 0; i < objArray.length; i++){
-		objArray[i].obj = game.add.sprite(((objArray[i].xLoc + offset[0])* (199/3)) + 1, ((objArray[i].yLoc + offset[1]) * 199/3) + 1, objArray[i].type);
+		objArray[i].obj = game.add.sprite(((objArray[i].xLoc - offset[0])* (199/3)) + 1, ((objArray[i].yLoc - offset[1]) * 199/3) + 1, objArray[i].type);
 	    }
 
 //var building = game.add.sprite(1,1,'build001');
@@ -123,8 +123,8 @@ window.onload = function() {
 	function update() {
 	if(offset[2]){
 	    for (i = 0; i < objArray.length; i++){
-		objArray[i].obj.x = ((objArray[i].xLoc + offset[0]) * (199/3)) + 1;
-		objArray[i].obj.y = ((objArray[i].yLoc + offset[1]) * (199/3)) + 1;
+		objArray[i].obj.x = ((objArray[i].xLoc - offset[0]) * (199/3)) + 1;
+		objArray[i].obj.y = ((objArray[i].yLoc - offset[1]) * (199/3)) + 1;
 		
 	    }
 	    offset[2] = false;
