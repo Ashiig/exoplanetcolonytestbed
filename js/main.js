@@ -4,6 +4,8 @@ window.onload = function() {
 
 	var typeList = ['build001','build002','build003'];
 	var offset = [0,0];	
+	
+	var upAro, downAro, leftAro, rightAro;
 
 	function building(_xLoc, _yLoc, _type) {
 		this.xLoc = _xLoc;
@@ -42,13 +44,67 @@ window.onload = function() {
 
 	    //game.add.image(1,1,bmd);
 
-	    var down = game.add.button(400, 640 - 92, 'arrow', move_down, this);
-	    down.anchor.setTo(0.5, 0.5);
-	    down.angle = (180);
+	    var downAro = game.add.button(400, 640 - 64, 'arrow', move_down, this);
+	    downAro.anchor.setTo(0.5, 0.5);
+	    downAro.angle = (180);
+
+
+	    var upAro = game.add.button(400, 64, 'arrow_defunct', move_up, this);
+	    upAro.anchor.setTo(0.5, 0.5);
+	    upAro.angle = (180);
+
+
+	    var leftAro = game.add.button(400, 640 - 64, 'arrow_defunct', move_left, this);
+	    leftAro.anchor.setTo(0.5, 0.5);
+	    leftAro.angle = (270);
+
+
+	    var rightAro = game.add.button(400, 640 - 64, 'arrow', move_right, this);
+	    rightAro.anchor.setTo(0.5, 0.5);
+	    rightAro.angle = (900);
 	}
 	
 	function move_down() {
+		if(offset[1] < 64){
+		upAro.key = 'arrow';
 		offset[1] += 1;
 		console.log(offset[1]);
+		if(offset[1] == 64){
+			downAro.key = 'arrow_defunct';
+		}
+		}
+	}
+
+	function move_left() {
+		if(offset[0] >= 1){
+		offset[0] -= 1;
+		console.log(offset[1]);
+		if(offset[0] == 0){
+			leftAro.key = 'arrow_defunct';
+		}
+		}
+	}
+
+	function move_right() {
+		if(offset[0] < 64){
+		leftAro.key = 'arrow';
+		offset[1] += 1;
+		console.log(offset[1]);
+		if(offset[0] == 64){
+			rightAro.key = 'arrow_defunct';
+		}
+		}
+	}
+
+	function move_up() {
+		if(offset[1] >= 1){
+			downAro.key = 'arrow';
+			offset[1] -= 1;
+			console.log(offset[1]);
+			if(offset[1] == 0){
+				upAro.key = 'arrow_defunct';
+			}
+		}
+		
 	}
 };
