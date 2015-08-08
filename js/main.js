@@ -45,22 +45,22 @@ window.onload = function() {
 
 	    //game.add.image(1,1,bmd);
 
-	    var downAro = game.add.button(400, 640 - 64, 'arrow', move_down, this);
+	    downAro = game.add.button(400, 640 - 64, 'arrow', move_down, this);
 	    downAro.anchor.setTo(0.5, 0.5);
 	    downAro.angle = (180);
 
 
-	    var upAro = game.add.button(400, 64, 'arrow_defunct', move_up, this);
+	    upAro = game.add.button(400, 64, 'arrow_defunct', move_up, this);
 	    upAro.anchor.setTo(0.5, 0.5);
 	    upAro.angle = (0);
 
 
-	    var leftAro = game.add.button(64, 320, 'arrow_defunct', move_left, this);
+	    leftAro = game.add.button(64, 320, 'arrow_defunct', move_left, this);
 	    leftAro.anchor.setTo(0.5, 0.5);
 	    leftAro.angle = (270);
 
 
-	    var rightAro = game.add.button(800 - 64, 320, 'arrow', move_right, this);
+	    rightAro = game.add.button(800 - 64, 320, 'arrow', move_right, this);
 	    rightAro.anchor.setTo(0.5, 0.5);
 	    rightAro.angle = (90);
 	}
