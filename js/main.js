@@ -93,10 +93,11 @@ window.onload = function () {
 
 	    var logo = game.add.tileSprite(0, 0,800,640, 'bgtile', 0, imageGroup);
         imageGroup.inputEnabled = true;
-        imageGroup.input.pixelPerfectClick = true;
+        //imageGroup.input.pixelPerfectClick = true;
+        imageGroup.hitArea = new Phaser.Rectangle(0,0,800,640);
         imageGroup.useHandCursor = true;
         
-        logo.events.onInputUp.add(onClickMap, this);
+        imageGroup.events.onInputUp.add(onClickMap, this);
 	    for (i = 0; i < objArray.length; i++){
 		objArray[i].obj = game.add.sprite(((objArray[i].xLoc - offset[0])* (199/3)) + 1, ((objArray[i].yLoc - offset[1]) * 199/3) + 1, objArray[i].type, imageGroup);
 	    }
