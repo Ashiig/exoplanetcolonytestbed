@@ -63,7 +63,8 @@ window.onload = function () {
 	}
     
     function onClickMap(sprite, pointer) {
-        Console.log(pointer.position.x, pointer.position.y);
+        console.log(pointer.position.x, pointer.position.y);
+        move_right();
     }
     
 	function preload() {
