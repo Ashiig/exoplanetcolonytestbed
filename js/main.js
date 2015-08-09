@@ -77,7 +77,7 @@ window.onload = function () {
         else if(offset[1] > 0){
             offset[1] = 0;
             downAro.frame = 1;
-            upArow.frame = 0;
+            upAro.frame = 0;
             offset[2] = true;
         }
 		
@@ -85,15 +85,18 @@ window.onload = function () {
     
     function onClickMap(sprite, pointer) {
         console.log(Math.floor(pointer.position.x / (199/3)), Math.floor(pointer.position.y/(199/3)));
-        for(i = 0; i < objArray[objArray.length]; i++){
+        Boolean flag = false;
+        for(i = 0; i < objArray[objArray.length] && !flag; i++){
             if(objArray[i].xLoc == Math.floor(pointer.position.x / (199/3)) + offset[0]){
                 if(objArray[i].yLoc = Math.floor(pointer.position.y / (199/3)) + offset[1]){   
-                    return;
+                    flag- true;
                 }
             }
         }
+        if(!flag){
         objArray[objArray.length] = new building(Math.floor(pointer.position.x / (199/3)) + offset[0], Math.floor(pointer.position.y/(199/3)) + offset[1] ,typeList[(pointer.position.x + pointer.position.y) % 5]);
         objArray[objArray.length - 1].obj = game.add.sprite(((objArray[objArray.length - 1].xLoc - offset[0])* (199/3)) + 1, ((objArray[objArray.length - 1].yLoc - offset[1]) * 199/3) + 1, objArray[objArray.length - 1].type, imageGroup);
+        }
     }
     
 	function preload() {
