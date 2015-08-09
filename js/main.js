@@ -1,6 +1,6 @@
 window.onload = function () {
 
-	var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update});
+	var game = new Phaser.Game(1600, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update});
     var mapGroup;
     var imageGroup;
     var inputGroup;
@@ -33,7 +33,7 @@ window.onload = function () {
 	}
 
 	function move_left() {
-		if(offset[0] >= 3){
+		if(offset[0] > 3){
 		rightAro.frame = 1;
 		offset[0] -= 3;
 		//console.log(offset[0]);
@@ -51,7 +51,7 @@ window.onload = function () {
 	}
 
 	function move_right() {
-		if(offset[0] <= 61){
+		if(offset[0] < 60){
             leftAro.frame = 1;
             offset[0] += 3;
             console.log(offset[0]);
@@ -105,6 +105,7 @@ window.onload = function () {
     
 	function preload() {
 		game.load.image('bgtile', 'assets/images/bgtile.bmp');
+        game.load.image('selecttile', 'assets/images/selectpanel.bmp');
 		game.load.image('build001', 'assets/images/building001.png');
 		game.load.image('build002', 'assets/images/building002.png');
 		game.load.image('build003', 'assets/images/building003.png');
@@ -127,6 +128,7 @@ window.onload = function () {
         //mapGroup = game.add.group();
         imageGroup = game.add.group();
         inputGroup = game.add.group();
+        var panel = game.add.sprite(800, 0, 800, 600, 'selecttile', 0);
         ///imageGroup.z = 7001;
         //inputGroup.z = 1;
 	    var logo = game.add.tileSprite(0, 0,800,640, 'bgtile', 0);
