@@ -1,6 +1,6 @@
 window.onload = function () {
 
-	var game = new Phaser.Game(1600, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update});
+	var game = new Phaser.Game(1600, 1060, Phaser.AUTO, '', { preload: preload, create: create, update: update});
     var mapGroup;
     var imageGroup;
     var inputGroup;
@@ -131,9 +131,13 @@ window.onload = function () {
         var panel = game.add.sprite(800, 0, 'selecttile', 0);
         panel.width = 800;
         panel.height = 600;
+        
+        var consol = game.add.sprite(0, 600, 'selecttile', 0);
+        panel.width = 1600;
+        panel.height = 460;
         ///imageGroup.z = 7001;
         //inputGroup.z = 1;
-	    var logo = game.add.tileSprite(0, 0,800,640, 'bgtile', 0);
+	    var logo = game.add.tileSprite(0, 0,800,600, 'bgtile', 0);
         imageGroup.add(logo);
 	    //for (i = 0; i < objArray.length; i++){
 		//objArray[i].obj = game.add.sprite(((objArray[i].xLoc - offset[0])* (199/3)) + 1, ((objArray[i].yLoc - offset[1]) * 199/3) + 1, objArray[i].type, imageGroup);
@@ -147,7 +151,7 @@ window.onload = function () {
         
         var drawnObject;
         var width = 800 // example;
-var height = 640 // example;
+var height = 600 // example;
 var bmd = game.add.bitmapData(width, height);
  
 bmd.ctx.beginPath();
