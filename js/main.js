@@ -96,7 +96,8 @@ window.onload = function () {
         }
         if(!flag){
         objArray[objArray.length] = new building(Math.floor(pointer.position.x / (199/3)) + offset[0], Math.floor(pointer.position.y/(199/3)) + offset[1] ,typeList[(pointer.position.x + pointer.position.y) % 5]);
-        objArray[objArray.length - 1].obj = game.add.sprite(((objArray[objArray.length - 1].xLoc - offset[0])* (199/3)) + 1, ((objArray[objArray.length - 1].yLoc - offset[1]) * 199/3) + 1, objArray[objArray.length - 1].type, imageGroup);
+        objArray[objArray.length - 1].obj = game.add.sprite(((objArray[objArray.length - 1].xLoc - offset[0])* (199/3)) + 1, ((objArray[objArray.length - 1].yLoc - offset[1]) * 199/3) + 1, objArray[objArray.length - 1].type);
+        imageGroup.add(objArray[objArray.length - 1].obj);
         console.log(imageGroup.z);
             game.world.bringToTop(inputGroup);
         }
@@ -128,8 +129,8 @@ window.onload = function () {
         inputGroup = game.add.group();
         ///imageGroup.z = 7001;
         //inputGroup.z = 1;
-	    var logo = game.add.tileSprite(0, 0,800,640, 'bgtile', 0, imageGroup);
-        
+	    var logo = game.add.tileSprite(0, 0,800,640, 'bgtile', 0);
+        imageGroup.add(logo);
 	    //for (i = 0; i < objArray.length; i++){
 		//objArray[i].obj = game.add.sprite(((objArray[i].xLoc - offset[0])* (199/3)) + 1, ((objArray[i].yLoc - offset[1]) * 199/3) + 1, objArray[i].type, imageGroup);
 	   // }
@@ -167,28 +168,33 @@ drawnObject.anchor.setTo(0.5, 0.5);
         
 	    //game.add.image(1,1,bmd);
 
-	    downAro = game.add.button(400, 640 - 64, 'arrow', move_down, this,inputGroup);
+	    downAro = game.add.button(400, 640 - 64, 'arrow', move_down, this);
 	    downAro.frame = 1;
 	    downAro.anchor.setTo(0.5, 0.5);
 	    downAro.angle = (180);
 
 
-	    upAro = game.add.button(400, 64, 'arrow', move_up, this, inputGroup);
+	    upAro = game.add.button(400, 64, 'arrow', move_up, this);
 	    upAro.frame = 0;
 	    upAro.anchor.setTo(0.5, 0.5);
 	    upAro.angle = (0);
 
 
-	    leftAro = game.add.button(64, 320, 'arrow', move_left, this, inputGroup);
+	    leftAro = game.add.button(64, 320, 'arrow', move_left, this);
    	    leftAro.frame = 0;
 	    leftAro.anchor.setTo(0.5, 0.5);
 	    leftAro.angle = (270);
 
 
-	    rightAro = game.add.button(800 - 64, 320, 'arrow', move_right, this, inputGroup);
+	    rightAro = game.add.button(800 - 64, 320, 'arrow', move_right, this);
 	    rightAro.frame = 1;
 	    rightAro.anchor.setTo(0.5, 0.5);
 	    rightAro.angle = (90);
+        inputGroup.add(drawnObject);
+        inputGroup.add(rightAro);
+        inputGroup.add(leftAro);
+        inputGroup.add(upAro);
+        inputGroup.add(downAro);
 	}
 	
 	
