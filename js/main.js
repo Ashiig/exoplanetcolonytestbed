@@ -1,7 +1,10 @@
 window.onload = function () {
 
 	var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update});
-
+    var mapGroup = game.add.group();
+    var imageGroup = game.add.group(mapGroup);
+    var inputGroup = game.add.group(mapGroup);
+    
 	var typeList = ['build001', 'build002', 'build003', 'build005', 'build006'];
 	var offset = [0, 0, false];
 	
@@ -81,9 +84,7 @@ window.onload = function () {
 
 	function create () {
 	    //var objArray = [new building(0,0,typeList[0]), new building(3,2,typeList[2]), new building(8,6, typeList[1])];.
-        var mapGroup = game.add.group();
-        var imageGroup = game.add.group(mapGroup);
-        var inputGroup = game.add.group(mapGroup);
+        
 	    /*for(i = 0; i < 12; i++){
 		for(j = 0; j < 12; j++){
 		    //if(i % 5 == j){
