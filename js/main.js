@@ -1,19 +1,71 @@
-window.onload = function() {
+window.onload = function () {
 
-	var game = new Phaser.Game(800,600,Phaser.AUTO, '', { preload: preload, create: create , update: update});
+	var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update});
 
-	var typeList = ['build001','build002','build003','build005','build006'];
-	var offset = [0,0, false];	
+	var typeList = ['build001', 'build002', 'build003', 'build005', 'build006'];
+	var offset = [0, 0, false];
 	
 	var upAro, downAro, leftAro, rightAro;
 	var objArray = [];
-	function building(_xLoc, _yLoc, _type){
-		this.xLoc = _xLoc;
-		this.yLoc = _yLoc;
-		this.type = _type;
+	function building(xLoc, yLoc, type) {
+		this.xLoc = xLoc;
+		this.yLoc = yLoc;
+		this.type = type;
 		this.obj = undefined;
 	}
-	
+	function move_down() {
+		if(offset[1] < 64){
+		upAro.frame = 1;
+		offset[1] += 1;
+		console.log(offset[1]);
+		if(offset[1] >= 64){
+			downAro.frame = 0;
+		}
+		offset[2] = true;
+		}
+	}
+
+	function move_left() {
+		if(offset[0] >= 1){
+		rightAro.frame = 1;
+		offset[0] -= 1;
+		console.log(offset[0]);
+		if(offset[0] <= 0){
+			leftAro.frame = 0;
+		}
+		offset[2] = true;
+		}
+	}
+
+	function move_right() {
+		if(offset[0] < 64){
+            leftAro.frame = 1;
+            offset[0] += 1;
+            console.log(offset[0]);
+            if(offset[0] >= 64){
+                rightAro.frame = 0;
+            }
+            offset[2] = true;
+        }
+	}
+
+	function move_up() {
+		if(offset[1] >= 1){
+		downAro.frame = 1;
+		offset[1] -= 1;
+		console.log(offset[1]);
+		if(offset[1] <= 0){
+			upAro.frame = 0;
+		}
+		offset[2] = true;
+		}
+		
+	}
+    
+    function onClickMap(sprite, pointer) {
+        Console.log(pointer.position.x, pointer.position.y);
+    }
+    
 	function preload() {
 		game.load.image('bgtile', 'assets/images/bgtile.bmp');
 		game.load.image('build001', 'assets/images/building001.png');
@@ -37,7 +89,11 @@ window.onload = function() {
 	    }
 
 	    var logo = game.add.tileSprite(0, 0,800,640, 'bgtile',0);
-             
+        logo.inputEnabled = true;
+        logo.input.pixelPerfectClick = true;
+        logo.useHandCursor = true;
+        
+        logo.events.onInputUp.add(onClickMap, this);
 	    for (i = 0; i < objArray.length; i++){
 		objArray[i].obj = game.add.sprite(((objArray[i].xLoc - offset[0])* (199/3)) + 1, ((objArray[i].yLoc - offset[1]) * 199/3) + 1, objArray[i].type);
 	    }
@@ -73,54 +129,7 @@ window.onload = function() {
 	    rightAro.angle = (90);
 	}
 	
-	function move_down() {
-		if(offset[1] < 64){
-		upAro.frame = 1;
-		offset[1] += 1;
-		console.log(offset[1]);
-		if(offset[1] >= 64){
-			downAro.frame = 0;
-		}
-		offset[2] = true;
-		}
-	}
-
-	function move_left() {
-		if(offset[0] >= 1){
-		rightAro.frame = 1;
-		offset[0] -= 1;
-		console.log(offset[0]);
-		if(offset[0] <= 0){
-			leftAro.frame = 0;
-		}
-		offset[2] = true;
-		}
-	}
-
-	function move_right() {
-		if(offset[0] < 64){
-		leftAro.frame = 1;
-		offset[0] += 1;
-		console.log(offset[0]);
-		if(offset[0] >= 64){
-			rightAro.frame = 0;
-		}
-		offset[2] = true;
-		}
-	}
-
-	function move_up() {
-		if(offset[1] >= 1){
-		downAro.frame = 1;
-		offset[1] -= 1;
-		console.log(offset[1]);
-		if(offset[1] <= 0){
-			upAro.frame = 0;
-		}
-		offset[2] = true;
-		}
-		
-	}
+	
 
 	function update() {
 	if(offset[2]){
