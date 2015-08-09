@@ -95,9 +95,9 @@ window.onload = function () {
 
 	    var logo = game.add.tileSprite(0, 0,800,640, 'bgtile', 0, imageGroup);
         
-	    for (i = 0; i < objArray.length; i++){
-		objArray[i].obj = game.add.sprite(((objArray[i].xLoc - offset[0])* (199/3)) + 1, ((objArray[i].yLoc - offset[1]) * 199/3) + 1, objArray[i].type, imageGroup);
-	    }
+	    //for (i = 0; i < objArray.length; i++){
+		//objArray[i].obj = game.add.sprite(((objArray[i].xLoc - offset[0])* (199/3)) + 1, ((objArray[i].yLoc - offset[1]) * 199/3) + 1, objArray[i].type, imageGroup);
+	   // }
 
 //var building = game.add.sprite(1,1,'build001');
 	    game.stage.smoothed = false;
