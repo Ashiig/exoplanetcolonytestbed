@@ -86,7 +86,7 @@ window.onload = function () {
     function onClickMap(sprite, pointer) {
         
         var flag = false;
-        for(i = 0; i < objArray[objArray.length] && !flag; i++){
+        for(i = 0; i < objArray.length && !flag; i++){
             console.log(Math.floor(pointer.position.x / (199/3)) + offset[0], objArray[i].xLoc, Math.floor(pointer.position.y/(199/3)) + offset[1], objArray[i].yLoc);
             if(objArray[i].xLoc == Math.floor(pointer.position.x / (199/3)) + offset[0]){
                 if(objArray[i].yLoc = Math.floor(pointer.position.y / (199/3)) + offset[1]){   
