@@ -119,6 +119,7 @@ drawnObject = game.add.sprite(game.world.centerX, game.world.centerY, bmd, 0, in
         
         drawnObject.inputEnabled = true;
         drawnObject.input.pixelPerfectClick = true;
+        drawnObject.input.pixelPerfectAlpha = 0;
         drawnObject.hitArea = new Phaser.Rectangle(0,0,800,640);
         drawnObject.useHandCursor = true;
         
