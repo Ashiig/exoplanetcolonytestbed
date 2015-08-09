@@ -133,8 +133,8 @@ window.onload = function () {
         panel.height = 600;
         
         var consol = game.add.sprite(0, 600, 'selecttile', 0);
-        panel.width = 1600;
-        panel.height = 460;
+        consol.width = 1600;
+        consol.height = 460;
         ///imageGroup.z = 7001;
         //inputGroup.z = 1;
 	    var logo = game.add.tileSprite(0, 0,800,600, 'bgtile', 0);
