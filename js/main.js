@@ -125,8 +125,8 @@ window.onload = function () {
         mapGroup = game.add.group();
         imageGroup = game.add.group(mapGroup);
         inputGroup = game.add.group(mapGroup);
-        imageGroup.z = 1;
-        inputGroup.z = 6001;
+        imageGroup.z = 7001;
+        inputGroup.z = 1;
 	    var logo = game.add.tileSprite(0, 0,800,640, 'bgtile', 0, imageGroup);
         
 	    //for (i = 0; i < objArray.length; i++){
