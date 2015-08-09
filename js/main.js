@@ -97,6 +97,7 @@ window.onload = function () {
         if(!flag){
         objArray[objArray.length] = new building(Math.floor(pointer.position.x / (199/3)) + offset[0], Math.floor(pointer.position.y/(199/3)) + offset[1] ,typeList[(pointer.position.x + pointer.position.y) % 5]);
         objArray[objArray.length - 1].obj = game.add.sprite(((objArray[objArray.length - 1].xLoc - offset[0])* (199/3)) + 1, ((objArray[objArray.length - 1].yLoc - offset[1]) * 199/3) + 1, objArray[objArray.length - 1].type, imageGroup);
+        console.log(objArray[objArray.length - 1].z);
         }
     }
     
