@@ -63,8 +63,8 @@ window.onload = function () {
 	}
     
     function onClickMap(sprite, pointer) {
-        console.log(pointer.position.x, pointer.position.y);
-        move_right();
+        console.log(pointer.position.x / (199/3), pointer.position.y/(199/3));
+        objArray[objArray.length] = new building(pointer.position.x / (199/3), pointer.position.y/(199/3),typeList[(pointer.position.x + pointer.position.y) % 5]);
     }
     
 	function preload() {
@@ -83,13 +83,13 @@ window.onload = function () {
         var mapGroup = game.add.group();
         var imageGroup = game.add.group(mapGroup);
         var inputGroup = game.add.group(mapGroup);
-	    for(i = 0; i < 12; i++){
+	    /*for(i = 0; i < 12; i++){
 		for(j = 0; j < 12; j++){
 		    //if(i % 5 == j){
 		    objArray[(i * 12) + j] = new building(i,j,typeList[(i  + j) % 5]);
 		    //}
 		}
-	    }
+	    }*/
 
 	    var logo = game.add.tileSprite(0, 0,800,640, 'bgtile', 0, imageGroup);
         
@@ -114,13 +114,13 @@ bmd.ctx.fillStyle = '#ffffff';
 bmd.ctx.fill();
 drawnObject = game.add.sprite(game.world.centerX, game.world.centerY, bmd, 0, inputGroup);
         drawnObject.alpha = 0;
-//drawnObject.anchor.setTo(0.5, 0.5);
+drawnObject.anchor.setTo(0.5, 0.5);
         
         
         drawnObject.inputEnabled = true;
         drawnObject.input.pixelPerfectClick = true;
         drawnObject.input.pixelPerfectAlpha = 0;
-        drawnObject.hitArea = new Phaser.Rectangle(0,0,800,640);
+        //drawnObject.hitArea = new Phaser.Rectangle(0,0,800,640);
         drawnObject.useHandCursor = true;
         
         drawnObject.events.onInputUp.add(onClickMap, this);
