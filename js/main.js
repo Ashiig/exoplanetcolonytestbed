@@ -158,7 +158,7 @@ bmd.ctx.beginPath();
 bmd.ctx.rect(0, 0, width, height);
 bmd.ctx.fillStyle = '#ffffff';
 bmd.ctx.fill();
-drawnObject = game.add.sprite(game.world.centerX, game.world.centerY, bmd, 0, inputGroup);
+drawnObject = game.add.sprite(400, 300, bmd, 0, inputGroup);
         drawnObject.alpha = 0;
 drawnObject.anchor.setTo(0.5, 0.5);
         
